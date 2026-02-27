@@ -28,6 +28,8 @@ class ListOrdersRequest extends FormRequest
             'to' => ['nullable', 'date'],
             'per_page' => ['nullable', 'integer', 'min:1', 'max:100'],
             'include_items' => ['nullable', 'boolean'],
+            'sort' => ['sometimes', 'string', 'in:id,patient_name,placed_at,created_at,total_cents,status,items_count'],
+            'dir' => ['sometimes', 'in:asc,desc'],
         ];
     }
 }

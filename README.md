@@ -1,4 +1,4 @@
-# Sample Laravel/PHP/React App
+# Pharmacy Ops Laravel/PHP/React App
 
 **React + Tailwind** frontend and **Laravel + MySQL** backend API.
 

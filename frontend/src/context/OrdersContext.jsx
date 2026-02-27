@@ -26,6 +26,9 @@ export function OrdersProvider({children}){
   const [meta, setMeta] = useState(null); //pagination info returned by laravel currpage, lastpage, total, perpage
   const [debouncedQ, setDebouncedQ] = useState(""); // used for debounce
 
+  const [sort, setSort] = useState(null); //sorting variable when sorting
+  const [dir, setDir] = useState(null); //sorting direction when sorting
+
     // Debounce search (300ms)
     useEffect(() => {
         const t = setTimeout(() => setDebouncedQ(q.trim()), 300);
@@ -39,8 +42,10 @@ export function OrdersProvider({children}){
         q: debouncedQ || "",
         page,
         per_page: perPage,
+        sort,
+        dir,
         };
-    }, [status, debouncedQ, page, perPage]);
+    }, [status, debouncedQ, page, perPage, sort, dir]);
 
     useEffect( () => {
         let cancelled = false;
@@ -115,7 +120,7 @@ export function OrdersProvider({children}){
         return json; // return created order object
     }
 
-    const value = { orders, meta, loading, error, setError, status, setStatus, q, setQ, page, setPage, perPage, setPerPage, canGoPrev, canGoNext, deleteOrder, createOrder };
+    const value = { orders, meta, loading, error, setError, status, setStatus, q, setQ, page, setPage, perPage, setPerPage, canGoPrev, canGoNext, deleteOrder, createOrder, sort, setSort, dir, setDir };
     return(
         <>
             <OrdersContext.Provider value={value}>{children}</OrdersContext.Provider>

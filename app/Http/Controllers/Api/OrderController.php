@@ -44,9 +44,18 @@ class OrderController extends Controller{
             $query->whereDate('placed_at', '<=', $filters['to']);
         }
 
-        //sorting newest 1st
-        $query->orderByDesc('placed_at')
+        if(!empty($filters['sort'])){ //ading sorting for a specific field and the direction [ascending,descending]
+            $dir = $filters['dir'] ?? "desc";
+            $query->orderBy($filters['sort'], $dir)->orderByDesc('id');
+        }else{
+            //sorting newest 1st
+            $query->orderByDesc('placed_at')
             ->orderByDesc('created_at');
+        }
+
+        //sorting newest 1st -> removed because we added the sort up top and the direction
+        // $query->orderByDesc('placed_at')
+        //     ->orderByDesc('created_at');
 
         $perPage = $filters['per_page'] ?? 15; //how many to show for pagination
 
