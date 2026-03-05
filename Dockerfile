@@ -19,7 +19,7 @@ WORKDIR /var/www
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --optimize-autoloader
 
 # Set permissions
 RUN chmod -R 775 storage bootstrap/cache
