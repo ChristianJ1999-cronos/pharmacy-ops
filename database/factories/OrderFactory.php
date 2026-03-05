@@ -32,7 +32,7 @@ class OrderFactory extends Factory
     public function configure(): static{
         return $this->afterCreating(function ( Order $order ){
             $items = OrderItem::factory()
-                ->count($this->faker->numberBetween(1,4))
+                ->count(rand(1,4))
                 ->create( ['order_id' => $order->id] ); //where we create 1-4 order items
 
             $total = $items->sum(fn ($item) => $item->price_cents * $item->quantity);
