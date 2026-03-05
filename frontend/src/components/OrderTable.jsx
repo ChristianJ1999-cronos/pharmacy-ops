@@ -59,7 +59,7 @@ function OrderTable(){
             </div>
             {/* Table */}
             {!loading && !error && (
-                <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
+                <div className="overflow-x-auto rounded-lg border border-zinc-200 bg-white">
                 <table className="w-full border-collapse text-sm">
                     <thead className="bg-zinc-100 text-left text-zinc-700">
                     <tr>

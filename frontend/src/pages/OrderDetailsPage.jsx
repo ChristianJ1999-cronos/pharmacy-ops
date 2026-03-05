@@ -83,7 +83,7 @@ function OrderDetailsPage(){
                 </h1>
                 <p className="text-sm text-zinc-600">
                 RX: {order.external_rx_id ?? "—"} • Total: {money(order.total_cents)} • Placed:{" "}
-                {order.placed_at ?? "—"}
+                {order.placed_at ? new Date(order.placed_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "2-digit" }) : "—"}
                 </p>
             </div>
 
@@ -132,7 +132,7 @@ function OrderDetailsPage(){
             </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
+            <div className="overflow-x-auto rounded-lg border border-zinc-200 bg-white">
             <table className="w-full border-collapse text-sm">
                 <thead className="bg-zinc-100 text-left text-zinc-700">
                 <tr>
