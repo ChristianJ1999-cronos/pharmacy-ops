@@ -21,18 +21,18 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'external_rx_id' => fake()->optional()->bothify('RX-#####'),
-            'patient_name' => fake()->name(),
-            'status' => fake()->randomElement( ['pending', 'processing', 'shipped', 'cancelled'] ),
+            'external_rx_id' => $this->faker->optional()->bothify('RX-#####'),
+            'patient_name' => $this->faker->name(),
+            'status' => $this->faker->randomElement( ['pending', 'processing', 'shipped', 'cancelled'] ),
             'total_cents' => 0, //compute this after items get created
-            'placed_at' => fake()->dateTimeBetween('-30 days', 'now'), //random date in the last month (30 days to be specific) 
+            'placed_at' => $this->faker->dateTimeBetween('-30 days', 'now'), //random date in the last month (30 days to be specific) 
         ];
     }
 
     public function configure(): static{
         return $this->afterCreating(function ( Order $order ){
             $items = OrderItem::factory()
-                ->count(fake()->numberBetween(1,4))
+                ->count($this->faker->numberBetween(1,4))
                 ->create( ['order_id' => $order->id] ); //where we create 1-4 order items
 
             $total = $items->sum(fn ($item) => $item->price_cents * $item->quantity);

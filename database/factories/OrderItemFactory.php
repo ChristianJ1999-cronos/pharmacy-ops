@@ -17,16 +17,16 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'drug_name' => fake()->randomElement([
+            'drug_name' => $this->faker->randomElement([
                 'Acetaminophen 500mg',
                 'Loratadine 200mg',
                 'Omeprazole 500mg',
                 'Omeprazole 20mg',
                 'Ibuprofen 10mg',
             ]),
-            'ndc' => fake()->optional()->numerify('#####-####-##'),
-            'quantity' => fake()->numberBetween(1, 10),
-            'price_cents' => fake()->numberBetween(500, 5000),
+            'ndc' => $this->faker->optional()->numerify('#####-####-##'),
+            'quantity' => $this->faker->numberBetween(1, 10),
+            'price_cents' => $this->faker->numberBetween(500, 5000),
         ];
     }
 }
