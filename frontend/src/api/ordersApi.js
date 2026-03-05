@@ -41,7 +41,7 @@ export async function deleteOrder(id){
 
 export async function createOrder(payload) {
 
-  const url = `${API_BASE}/orders`;
+  
   const res = await fetch(`${API_BASE}/orders`, {
     method: "POST",
     headers: {
