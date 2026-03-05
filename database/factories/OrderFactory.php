@@ -21,7 +21,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'external_rx_id' => $this->faker->optional()->bothify('RX-#####'),
+            'external_rx_id' => rand(0, 1) ? 'RX-' . rand(10000, 99999) : null,
             'patient_name' => $this->faker->name(),
             'status' => $this->faker->randomElement( ['pending', 'processing', 'shipped', 'cancelled'] ),
             'total_cents' => 0, //compute this after items get created
