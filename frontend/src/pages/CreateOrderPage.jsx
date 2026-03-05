@@ -66,7 +66,6 @@ export default function CreateOrderPage() {
 
     try {
       const created = await createOrder(payload);
-      console.log("created =", created);
 
       // Navigate to details page for the new order
       navigate(`/orders/details/${created.id}`);
@@ -107,7 +106,7 @@ export default function CreateOrderPage() {
               className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm"
               value={patientName}
               onChange={(e) => setPatientName(e.target.value)}
-              placeholder="Cronos Time"
+              placeholder="Jane Smith"
             />
             {fieldError(errors, "patient_name")}
           </div>

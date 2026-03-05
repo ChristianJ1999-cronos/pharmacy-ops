@@ -105,7 +105,6 @@ export function OrdersProvider({children}){
         setError(null);
 
         const json = await apiCreateOrder(payload);
-        console.log("api create response =", json);
 
         // Refresh list so /orders reflects the new order
         // (We re-fetch using current params)

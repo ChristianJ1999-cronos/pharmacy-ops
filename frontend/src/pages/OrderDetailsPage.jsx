@@ -71,7 +71,6 @@ function OrderDetailsPage(){
         return <div>Order not found.</div>
     }
     const items = order?.items ?? [];
-    console.log(items);
 
     return (
         <div className="min-h-screen w-full bg-zinc-50 text-black">

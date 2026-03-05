@@ -51,7 +51,6 @@ function OrderTable(){
         )
     }
 
-    console.log(orders);
     return(
         <>
             <div className="pb-3.5">
