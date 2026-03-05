@@ -8,3 +8,5 @@ Route::post('/orders', [OrderController::class, 'store'] ); //creating orders
 Route::get('/orders/{order}', [OrderController::class, 'show'] ); //show a single order
 Route::patch('/orders/{order}', [OrderController::class, 'update']); //updating fields
 Route::delete('/orders/{order}', [OrderController::class, 'remove']); //deleting order
+
+Route::get('/orders/stats', [OrderController::class, 'stats']);
